@@ -13,6 +13,7 @@ func permgen(ch chan []string, a []string, n int) {
 		a[n-1], a[i] = a[i], a[n-1]
 	}
 }
+
 func Permutations(a []string) <-chan []string {
 	permStream := make(chan []string)
 	go func() {
