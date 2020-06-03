@@ -6,7 +6,6 @@ func hanoigen(ch chan []string, n int, from, to, by string) {
 	if n == 0 {
 		return
 	}
-
 	hanoigen(ch, n-1, from, by, to)
 	ch <- []string{from, to}
 	hanoigen(ch, n-1, by, to, from)
