@@ -6,6 +6,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"strings"
 )
 
 func readword(ch chan string, file *os.File) {
@@ -14,7 +15,7 @@ func readword(ch chan string, file *os.File) {
 	r := bufio.NewReader(file)
 	for {
 		word, err := r.ReadString(' ')
-		ch <- word
+		ch <- strings.TrimSuffix(word, " ")
 		if err == io.EOF {
 			break
 		} else if err != nil {
@@ -49,6 +50,5 @@ func main() {
 	fmt.Println(filepath)
 	for w := range allwords(filepath) {
 		fmt.Println(w)
-
 	}
 }
